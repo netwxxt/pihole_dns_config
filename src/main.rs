@@ -28,5 +28,15 @@ fn main() {
 
     modify_connection_dns(connection_name, dns_servers);
 
-    Command::new("nmcli").args(["connection", "up", "Mtrainer5"]);
+    let output = Command::new("nmcli")
+        .args(["connection", "up", "Mtrainer5"])
+        .output()
+        .expect("Failed to bring connection up");
+
+    if output.status.success() {
+        println!("Connection reactivated!");
+    } else {
+        let stderr = String::from_utf8_lossy(&output.stderr);
+        eprintln!("Error bringing connection up: {}", stderr);
+    }
 }
