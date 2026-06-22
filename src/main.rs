@@ -16,7 +16,7 @@ struct Cli {
 #[derive(Args)]
 struct Config {
     /// DNS servers to set (space separated)
-    #[arg(short, long, default_value = "10.0.0.144 1.1.1.1 1.0.0.1")]
+    #[arg(short, long, default_value = "10.0.0.144")]
     dns: String,
 
     /// Specific connection name to modify
