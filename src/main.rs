@@ -49,7 +49,7 @@ fn get_active_connections() -> io::Result<Vec<String>> {
         .lines()
         .filter(|line| {
             let l = line.to_lowercase();
-            !l.contains("lo") && !l.contains("docker0") && !l.contains("docker")&& !l.contains("bridge") && !l.contains("nat")&& !l.contains("host") && !l.contains("none")&& !l.contains("br-")
+            !l.contains("lo") && !l.contains("docker0") && !l.contains("docker")&& !l.contains("bridge") && !l.contains("nat")&& !l.contains("host") && !l.contains("none")&& !l.contains("br-") && !l.contains("tailscale")
         })
         .map(|s| s.to_string())
         .collect())
